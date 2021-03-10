@@ -1,8 +1,8 @@
 const env = {
     database: 'nodedb',
-    username: 'gelo',
-    password: '123456',
-    host: 'localhost',
+    username: 'admin',
+    password: 'Garcia2020$',
+    host: 'database-node.ca8lxpap9vdo.us-east-2.rds.amazonaws.com',
     dialect: 'mysql',
     pool: {
       max: 5,
