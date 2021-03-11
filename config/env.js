@@ -2,14 +2,16 @@ const env = {
     database: 'nodedb',
     username: 'admin',
     password: 'Garcia2020$',
-    host: 'database-node.ca8lxpap9vdo.us-east-2.rds.amazonaws.com',
+    port:3306,
+    host: 'database1.ca8lxpap9vdo.us-east-2.rds.amazonaws.com',
+    logging: console.log,
+    maxConcurrentQueries: 100,
     dialect: 'mysql',
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-    }
+    dialectOptions: {
+      ssl:'Amazon RDS'
+  },
+    pool: { maxConnections: 5, maxIdleTime: 30},
+    language: 'en'
   };
    
   module.exports = env;
