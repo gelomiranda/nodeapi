@@ -37,9 +37,15 @@ db.RouteAccess = require('../model/mainroute.model.js')(sequelize, Sequelize);
 db.Nephrologist = require('../model/nephrologist.model.js')(sequelize, Sequelize);
 
 db.Item = require('../model/item.model.js')(sequelize, Sequelize);
+db.ItemHistory = require('../model/itemhistory.model.js')(sequelize, Sequelize);
+
 db.BillingHeader = require('../model/billingheader.model.js')(sequelize, Sequelize);
 db.BillingDetail = require('../model/billingdetail.model.js')(sequelize, Sequelize);
 db.BillingPaymentHistory = require('../model/billingpaymenthistory.model.js')(sequelize, Sequelize);
+
+
+
+db.Item.hasMany(db.ItemHistory,{ foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
 
 

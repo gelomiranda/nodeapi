@@ -4,7 +4,7 @@ const BillingDetail = db.BillingDetail;
 exports.create = (req,res) => {
     BillingDetail.bulkCreate(req.body)
     .then(BillingDetail => {
-        //res.status(200).send('Ok');
+        
         res.send(req.body);
     }).catch(err => {
         res.status(500).send(err);

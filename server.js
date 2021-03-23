@@ -32,6 +32,7 @@ require('./route/history.route.js')(app);
 require('./route/vitalsign.route.js')(app);
 require('./route/treatment.route.js')(app);
 require('./route/item.route.js')(app);
+require('./route/itemhistory.route.js')(app);
 require('./route/nephrologist.route.js')(app);
 require('./route/billingheader.route.js')(app);
 require('./route/billingdetail.route.js')(app);

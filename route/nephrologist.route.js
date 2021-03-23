@@ -1,19 +1,14 @@
 module.exports = function(app) {
  
     const Nephrologist = require('../controller/nephrologist.controller.js');
- 
-    // Create a new Customer
+
     app.post('/api/nephrologists', Nephrologist.create);
  
-    // Retrieve all Customer
     app.get('/api/nephrologists', Nephrologist.findAll);
  
-    // // Retrieve a single Customer by Id
-    // app.get('/api/patients/:patientId', patients.findById);
+    app.get('/api/nephrologists/:id', Nephrologist.findById);
  
-    // //  Update a Customer with Id
-    // app.put('/api/patients/:patientId', patients.update);
+    app.put('/api/nephrologists/:id', Nephrologist.update);
  
-    // // Delete a Customer with Id
-    // app.delete('/api/patients/:patientId', patients.delete);
+    app.delete('/api/nephrologists/:id', Nephrologist.delete);
 }

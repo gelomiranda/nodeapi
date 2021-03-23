@@ -12,17 +12,17 @@ exports.create = (req,res) => {
 }
 
 exports.update = (req, res) => {
-    const id = req.params.treatmentId;
-    Treatment.update(req.body, {
+    const id = req.params.id;
+    Nephrologist.update(req.body, {
       where: { id: id }
     }).then(num => {
     if (num == 1) {
         res.send({
-            message: "Treatment record was updated successfully."
+            message: "Nephrologist record was updated successfully."
         });
     } else {
         res.send({
-            message: `Cannot update treatment record with id=${id}. Maybe Treatment was not found or req.body is empty!`
+            message: `Cannot update Nephrologist record with id=${id}. Maybe Nephrologist was not found or req.body is empty!`
         });
     }
     })
@@ -49,8 +49,8 @@ exports.findAll = (req, res) => {
 };
 
 exports.findById = (req, res) => {
-    const id = req.params.treatmentId;
-    Treatment.findByPk(id)
+    const id = req.params.id;
+    Nephrologist.findByPk(id)
       .then(data => {
         res.send(data);
       })
@@ -61,19 +61,43 @@ exports.findById = (req, res) => {
     });
 };
 
-exports.findByPatient = (req, res) => {
-    const id = req.params.patientId;
-    Patient.findOne({
-        where: {
-          id: id
-        },
-        include: Treatment
-    }).then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error retrieving treatment with id=" + id
+exports.delete = (req, res) => {
+  const id = req.params.id;
+  Nephrologist.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res
+          .status(200)
+          .send({
+          message: "Item was deleted successfully!"
         });
+      } else {
+        res.send({
+          message: `Cannot delete Item with id=${id}. Maybe Item was not found!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Item with id=" + id
+      });
     });
 };
+
+// exports.findByPatient = (req, res) => {
+//     const id = req.params.id;
+//     Nephrologist.findOne({
+//         where: {
+//           id: id
+//         }
+//     }).then(data => {
+//         res.send(data);
+//       })
+//       .catch(err => {
+//         res.status(500).send({
+//           message: "Error retrieving treatment with id=" + id
+//         });
+//     });
+// };
