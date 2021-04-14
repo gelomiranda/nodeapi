@@ -1,7 +1,9 @@
 const env = {
     database: 'nodedb',
-    username: 'gelo',
-    password: '123456',
+    //username: 'gelo',
+    //password: '123456',
+    username: 'root',
+    password: 'test123',
     port:3306,
     //host: 'database1.ca8lxpap9vdo.us-east-2.rds.amazonaws.com',
     host: 'localhost',
