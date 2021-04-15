@@ -16,6 +16,8 @@ db.sequelize.sync({alter: true}).then(() => {
 
 app.use(cors());
 
+global.__basedir = __dirname;
+
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 
