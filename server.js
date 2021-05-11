@@ -38,6 +38,7 @@ require('./route/itemhistory.route.js')(app);
 require('./route/nephrologist.route.js')(app);
 require('./route/billingheader.route.js')(app);
 require('./route/billingdetail.route.js')(app);
+require('./route/vendor.route.js')(app);
 require('./route/user.route.js')(app);
 require('./route/login.route.js')(app);
 

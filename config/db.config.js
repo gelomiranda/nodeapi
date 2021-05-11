@@ -44,6 +44,7 @@ db.ItemHistory = require('../model/itemhistory.model.js')(sequelize, Sequelize);
 db.BillingHeader = require('../model/billingheader.model.js')(sequelize, Sequelize);
 db.BillingDetail = require('../model/billingdetail.model.js')(sequelize, Sequelize);
 db.BillingPaymentHistory = require('../model/billingpaymenthistory.model.js')(sequelize, Sequelize);
+db.Vendor = require('../model/vendor.model.js')(sequelize, Sequelize);
 
 
 
