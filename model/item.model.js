@@ -1,7 +1,12 @@
 module.exports = (sequelize, Sequelize) => {
     const Item = sequelize.define('item', {
         description: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            validate:  {
+                notEmpty:{
+                  msg: 'Description field cannot be empty.'
+                }
+            }
         },
         unit: {
             type: Sequelize.STRING
@@ -27,7 +32,7 @@ module.exports = (sequelize, Sequelize) => {
           get () {
             return 1;
           }
-        }
+        },
     });
     return Item;
 }

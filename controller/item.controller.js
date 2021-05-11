@@ -1,13 +1,23 @@
 const db = require('../config/db.config');
 const Item = db.Item;
+const ItemHistory = db.ItemHistory;
 
 exports.create = (req,res) => {
-    Item.create(req.body)
-    .then(user => {
-        res.status(200).send('Oks');
-    }).catch(err => {
-        res.status(500).send(err);
-    });
+  return db.sequelize.transaction(function (t) {
+      return Item.create(req.body,{transaction: t})
+        .then(function (item) {
+          return ItemHistory.create({
+            "itemId" : item.id,
+            "activity" : "Initial Commit",
+            "previous_quantity" : 0
+          },{transaction: t})
+          .then(function(history){
+            res.status(200).send('ok');
+          })
+        }).catch(error => {
+          res.status(500).send(error);
+        });
+  });
 }
 
 exports.findById = (req, res) => {
@@ -18,7 +28,7 @@ exports.findById = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + id
+        message: err
       });
   });
 };
